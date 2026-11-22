@@ -1,0 +1,49 @@
+{
+  "manifest_version": 3,
+  "name": "FOI YouTube Surround",
+  "description": "Play original YouTube 5.1 soundtracks through FOI Monitor while watching in Safari.",
+  "version": "1.0.3",
+  "permissions": [
+    "nativeMessaging",
+    "storage",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "https://www.youtube.com/*",
+    "https://youtube.com/*"
+  ],
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    "persistent": false
+  },
+  "action": {
+    "default_title": "FOI YouTube Surround",
+    "default_popup": "popup.html",
+    "default_icon": "toolbar.svg"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.youtube.com/*",
+        "https://youtube.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "css": [
+        "player.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "48": "icon-48.png",
+    "96": "icon-96.png",
+    "128": "icon-128.png",
+    "256": "icon-256.png"
+  },
+  "author": "Sourish Mukherjee",
+  "homepage_url": "https://github.com/msourish/FOI-YouTube-Surround"
+}

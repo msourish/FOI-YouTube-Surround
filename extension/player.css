@@ -1,0 +1,42 @@
+#movie_player .foi-surround-control {
+  display: inline-grid;
+  place-items: center;
+  align-self: center;
+  box-sizing: border-box;
+  padding: 0;
+  line-height: 0;
+  vertical-align: top;
+}
+#movie_player .foi-surround-control > svg {
+  display: block;
+  width: 25px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.55;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  pointer-events: none;
+}
+.foi-surround-control[data-mode="on"] rect {
+  fill: currentColor;
+  fill-opacity: .24;
+  stroke-width: 2;
+}
+.foi-surround-control[data-mode="checking"] rect { stroke-dasharray: 3 2; }
+.foi-surround-notice {
+  position: absolute;
+  z-index: 65;
+  left: 16px;
+  bottom: 72px;
+  max-width: min(420px, 85%);
+  border-radius: 6px;
+  padding: 8px 12px;
+  color: #fff;
+  background: rgba(18,18,18,.94);
+  font: 500 13px/1.35 -apple-system, BlinkMacSystemFont, sans-serif;
+  pointer-events: none;
+}
+.foi-surround-notice[hidden] { display: none; }
+
+#movie_player .foi-surround-control[hidden] { display: none !important; }
