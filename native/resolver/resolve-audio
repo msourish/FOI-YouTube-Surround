@@ -1,0 +1,14 @@
+#!/bin/sh
+set -eu
+tool_dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+for python_bin in \
+  "$HOME/.local/share/uv/python/cpython-3.11-macos-aarch64-none/bin/python3.11" \
+  /opt/homebrew/bin/python3 /usr/local/bin/python3 \
+  /Library/Frameworks/Python.framework/Versions/Current/bin/python3 \
+  /usr/bin/python3; do
+  if [ -x "$python_bin" ] && "$python_bin" -I -B -c 'import sys; sys.exit(sys.version_info < (3, 11))'; then
+    exec "$python_bin" -I -B "$tool_dir/resolve.py" "$@"
+  fi
+done
+printf '%s\n' '{"code":"runtime","error":"The YouTube reader needs Python 3.11 or newer on this Mac."}'
+exit 2
